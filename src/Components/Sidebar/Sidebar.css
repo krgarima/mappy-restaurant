@@ -1,0 +1,47 @@
+.sidebar-container {
+  width: 18vw;
+  height: 90vh;
+  background-color: yellowgreen;
+  color: var(--white-color);
+  position: fixed;
+  top: 10vh;
+  margin-bottom: auto;
+  padding-top: 4rem;
+}
+
+.sidebar {
+  height: 10vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.sidebar:hover {
+  background-color: var(--primary-color);
+}
+
+.sidebar span,
+i {
+  margin-left: 3rem;
+  color: var(--white-color);
+}
+
+.activeSidebar {
+  background-color: var(--primary-color);
+}
+
+@media only screen and (max-width: 800px) {
+  .sidebar span {
+    display: none;
+    margin: 0;
+  }
+  i {
+    margin: 0;
+  }
+
+  .sidebar {
+    justify-content: center;
+  }
+}

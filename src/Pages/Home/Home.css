@@ -1,0 +1,29 @@
+.home-page {
+  min-height: 90vh;
+  width: 100vw;
+}
+
+.container {
+  margin-top: 10vh;
+  width: 100vw;
+  display: flex;
+}
+
+.home-container {
+  width: 82vw;
+  margin-left: 18vw;
+  min-height: 90vh;
+}
+
+.map-container {
+  width: 35vw;
+  min-height: 40vh;
+  border: 1px solid black;
+}
+
+.all-maps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+}

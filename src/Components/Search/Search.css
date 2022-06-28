@@ -1,0 +1,61 @@
+.search-container {
+  background-color: red;
+  height: 15vh;
+  width: 100%;
+  margin-bottom: 10vh;
+}
+
+.searchArea input {
+  width: 38vw;
+  height: 1.8rem;
+  /* border-radius: 1rem; */
+  border: none;
+  background-color: var(--whitesmoke-color);
+  padding: 1rem;
+}
+
+/* .btn-add-location {
+  padding: 8px 1rem;
+  margin-left: 5px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+} */
+
+.search {
+  position: relative;
+}
+
+.suggestions {
+  width: 38vw;
+  min-height: 1.8rem;
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggested-restaurant {
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.suggested-restaurant:hover {
+  background-color: rgb(215, 214, 214);
+}
+
+/* @media only screen and (max-width: 500px) {
+  .large-search {
+    display: none;
+  }
+  .small-search {
+    display: unset;
+    position: absolute;
+    top: 10rem;
+    right: 2rem;
+  }
+  .searchArea input {
+    width: 68vw;
+  }
+} */
