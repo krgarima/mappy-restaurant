@@ -2,16 +2,28 @@ import React, { useState, createContext } from "react";
 
 const MapContext = createContext();
 
-const MapContextProvider = ({ children }) => {
-  // let maps =
-  //   document.cookie.length > 0
-  //     ? JSON.parse(document.cookie.split(";")[0].split("=")[1])
-  //     : false;
-  // let maps = JSON.stringify(document.cookie.split(";")[0].split("=")[1]);
-  // console.log(maps);
-  const [mapData, setMapData] = useState([]);
+// function getCookies(cookieName) {
+//   let dataArray;
+//   let cookieArray = document.cookie.split(";");
+//   if (cookieArray !== 0) {
+//     for (let i = 0; i < cookieArray.length; i++) {
+//       dataArray = cookieArray[i].split("=");
+//       if (dataArray[0] === " " + cookieName) {
+//         return dataArray[1];
+//       }
+//     }
+//   }
+// }
 
-  console.log(document.cookie);
+const MapContextProvider = ({ children }) => {
+  // const mapCookies = getCookies("mapData");
+  const getData = () => {
+    if (localStorage.getItem("mapData") !== null)
+      return localStorage.getItem("mapData");
+    else return [];
+  };
+  const [mapData, setMapData] = useState(getData());
+  console.log(mapData);
 
   return (
     <div>

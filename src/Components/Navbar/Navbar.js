@@ -5,12 +5,20 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { logged, setLogged } = useContext(AuthContext);
+  const { setLogged } = useContext(AuthContext);
 
-  // let encodedToken =
-  //   document.cookie.length > 0
-  //     ? document.cookie.split(";")[2].split("=")[1]
-  //     : "";
+  const getCookies = (cookieName) => {
+    let dataArray;
+    let cookieArray = document.cookie.split(";");
+    if (cookieArray !== 0) {
+      for (let i = 0; i < cookieArray.length; i++) {
+        dataArray = cookieArray[i].split("=");
+        if (dataArray[0] === cookieName) {
+          return dataArray[1];
+        }
+      }
+    }
+  };
 
   return (
     <div className="navbar">
@@ -22,7 +30,7 @@ const Navbar = () => {
         <button
           className="log"
           onClick={() => {
-            if (logged) {
+            if (getCookies("encodedToken")) {
               setLogged(false);
               document.cookie = "encodedToken=";
               navigate("/home");
@@ -31,7 +39,7 @@ const Navbar = () => {
             }
           }}
         >
-          {logged ? "Log Out" : " Log In"}
+          {getCookies("encodedToken") ? "Log Out" : " Log In"}
         </button>
       </ul>
     </div>

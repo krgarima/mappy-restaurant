@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Navbar, Sidebar, Maps } from "../../Components/";
 import { BookmarksContext } from "../../context/bookmarks-context";
 
 const Bookmarks = () => {
   const { bookmarkedData, setBookmarkedData } = useContext(BookmarksContext);
 
-  useEffect(() => {
-    document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
-  }, [bookmarkedData]);
+  //   const changeCookiesBookmarks = () => {
+  //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
+  //   };
 
   return (
     <div className="home-page">
@@ -16,7 +16,7 @@ const Bookmarks = () => {
         <aside>
           <Sidebar />
         </aside>
-        <aside className="home-container">
+        <aside className="home-container  bookmark">
           {/* <Search /> */}
           <section className="all-maps">
             {bookmarkedData.map((restaurantData) => (
@@ -24,13 +24,14 @@ const Bookmarks = () => {
                 <Maps restaurantData={restaurantData} />
                 <div className="btns-todo">
                   <button
-                    onClick={() =>
+                    onClick={() => {
                       setBookmarkedData(
                         bookmarkedData.filter(
                           (map) => map.id !== restaurantData.id
                         )
-                      )
-                    }
+                      );
+                      // changeCookiesBookmarks();
+                    }}
                   >
                     Remove from Bookmark
                   </button>

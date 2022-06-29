@@ -1,6 +1,5 @@
 .search-container {
-  /* background-color: rgb(255, 126, 126); */
-  background-color: rgb(1, 152, 152);
+  background-color: var(--primary-color);
   height: 12vh;
   width: 100%;
   margin-bottom: 10vh;
@@ -22,7 +21,7 @@
   width: 38vw;
   min-height: 1.8rem;
   position: absolute;
-  background-color: white;
+  background-color: var(--white-color);
   display: flex;
   flex-direction: column;
 }
@@ -34,20 +33,5 @@
 }
 
 .suggested-restaurant:hover {
-  background-color: rgb(215, 214, 214);
+  background-color: var(--hover-color);
 }
-
-/* @media only screen and (max-width: 500px) {
-  .large-search {
-    display: none;
-  }
-  .small-search {
-    display: unset;
-    position: absolute;
-    top: 10rem;
-    right: 2rem;
-  }
-  .searchArea input {
-    width: 68vw;
-  }
-} */

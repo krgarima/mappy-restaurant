@@ -1,3 +1,7 @@
+.maps {
+  background-color: var(--background-color);
+}
+
 .maps h2 {
   font-size: 1.5rem;
   padding: 10px 0;

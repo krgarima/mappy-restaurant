@@ -1,7 +1,7 @@
 .sidebar-container {
   width: 18vw;
   height: 90vh;
-  background-color: rgb(1, 152, 152);
+  background-color: var(--primary-color);
   color: var(--white-color);
   position: fixed;
   top: 10vh;
@@ -19,7 +19,7 @@
 }
 
 .sidebar:hover {
-  background-color: rgb(20, 121, 121);
+  background-color: var(--secondary-color);
 }
 
 .sidebar span,
@@ -29,7 +29,7 @@ i {
 }
 
 .activeSidebar {
-  background-color: rgb(0, 135, 135);
+  background-color: var(--active-color);
 }
 
 @media only screen and (max-width: 800px) {

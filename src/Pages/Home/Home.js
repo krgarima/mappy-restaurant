@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Navbar, Sidebar, Search, Maps } from "../../Components/";
 import { MapContext } from "../../context/map-context";
 import { BookmarksContext } from "../../context/bookmarks-context";
@@ -8,13 +8,15 @@ const Home = () => {
   const { mapData, setMapData } = useContext(MapContext);
   const { bookmarkedData, setBookmarkedData } = useContext(BookmarksContext);
 
-  useEffect(() => {
-    document.cookie = "mapData=" + JSON.stringify(mapData);
-  }, [mapData]);
+  // const changeCookiesMap = () => {
+  //   document.cookie = "mapData=" + JSON.stringify(mapData);
+  // };
+  // const changeCookiesBookmarks = () => {
+  //   document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
+  // };
 
-  useEffect(() => {
-    document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
-  }, [bookmarkedData]);
+  // let a = JSON.parse(mapData);
+  console.log(Array.from(mapData));
 
   return (
     <div className="home-page">
@@ -26,7 +28,7 @@ const Home = () => {
         <aside className="home-container">
           <Search />
           <section className="all-maps">
-            {mapData.map((restaurantData) => (
+            {/* {mapData.map((restaurantData) => (
               <div className="map-container" key={restaurantData.id}>
                 <Maps restaurantData={restaurantData} />
 
@@ -36,6 +38,7 @@ const Home = () => {
                       setMapData(
                         mapData.filter((map) => map.id !== restaurantData.id)
                       );
+                      // changeCookiesMap();
                     }}
                   >
                     Remove
@@ -46,13 +49,14 @@ const Home = () => {
                       setMapData(
                         mapData.filter((map) => map.id !== restaurantData.id)
                       );
+                      // changeCookiesBookmarks();
                     }}
                   >
                     Bookmark
                   </button>
                 </div>
               </div>
-            ))}
+            ))} */}
           </section>
         </aside>
       </div>

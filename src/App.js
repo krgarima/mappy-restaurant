@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Login, Home, Bookmarks } from "./Pages/index";
 import { AuthContext } from "./context/auth-context";
@@ -6,24 +6,35 @@ import "./App.css";
 
 function App() {
   const { logged } = useContext(AuthContext);
-  // let encodedToken =
-  //   document.cookie.length !== 0
-  //     ? document.cookie.split(";")[2].split("=")[1]
-  //     : "";
 
-  useEffect(() => {
-    if (document.cookie.length === 0) {
-      document.cookie = "mapData=[];bookmarks=[];encodedToken=";
+  const getCookies = (cookieName) => {
+    let dataArray;
+    let cookieArray = document.cookie.split(";");
+    if (cookieArray !== 0) {
+      for (let i = 0; i < cookieArray.length; i++) {
+        dataArray = cookieArray[i].split("=");
+        if (dataArray[0] === cookieName) {
+          return dataArray[1];
+        }
+      }
     }
-  }, []);
+  };
 
   return (
     <div className="App">
-      {console.log(document.cookie)}
       <Routes>
+        {getCookies("encodedToken")}
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={logged ? <Home /> : <Login />} />
-        <Route path="/bookmarks" element={logged ? <Bookmarks /> : <Login />} />
+        <Route
+          path="/home"
+          element={logged || getCookies("encodedToken") ? <Home /> : <Login />}
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            logged || getCookies("encodedToken") ? <Bookmarks /> : <Login />
+          }
+        />
 
         <Route
           path="*"

@@ -13,7 +13,7 @@ const Maps = ({ restaurantData }) => {
       </div>
       <iframe
         src={source}
-        allowFullscreen=""
+        allowFullScreen=""
         title={restaurantData.fields.Name}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

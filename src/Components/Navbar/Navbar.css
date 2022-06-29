@@ -43,6 +43,7 @@
   cursor: pointer;
   border: none;
   background-color: var(--primary-color);
+  color: var(--white-color);
 }
 
 .log:hover {
