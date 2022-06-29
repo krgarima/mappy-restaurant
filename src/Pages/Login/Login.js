@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
-import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = () => {
@@ -53,6 +52,8 @@ const Login = () => {
         setErrorMsg("Enter both Username and Password!");
         setShowError(true);
       }
+      setUserName("");
+      setPassword("");
     });
   };
 
