@@ -9,7 +9,7 @@ const Bookmarks = () => {
   //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
   //   };
 
-  // const data = JSON.parse(localStorage.getItem("bookmarks"));
+  const data = JSON.parse(localStorage.getItem("bookmarks"));
 
   return (
     <div className="home-page">
@@ -21,26 +21,21 @@ const Bookmarks = () => {
         <aside className="home-container  bookmark">
           {/* <Search /> */}
           <section className="all-maps">
-            {bookmarkedData ? (
-              bookmarkedData.map((restaurantData) => (
+            {data ? (
+              data.map((restaurantData) => (
                 <div className="map-container" key={restaurantData.id}>
                   <Maps restaurantData={restaurantData} />
                   <div className="btns-todo">
                     <button
                       onClick={() => {
-                        setBookmarkedData(
-                          bookmarkedData.filter(
-                            (map) => map.id !== restaurantData.id
-                          )
+                        const removeData = data.filter(
+                          (map) => map.id !== restaurantData.id
                         );
-                        // localStorage.setItem(
-                        //   "bookmarks",
-                        //   JSON.stringify(
-                        //     bookmarkedData.filter(
-                        //       (map) => map.id !== restaurantData.id
-                        //     )
-                        //   )
-                        // );
+                        setBookmarkedData(removeData);
+                        localStorage.setItem(
+                          "bookmarks",
+                          JSON.stringify(removeData)
+                        );
                         // changeCookiesBookmarks();
                       }}
                     >

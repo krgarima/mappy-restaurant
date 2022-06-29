@@ -52,14 +52,21 @@ const Home = () => {
                     </button>
                     <button
                       onClick={() => {
+                        const removeData = data.filter(
+                          (map) => map.id !== restaurantData.id
+                        );
+                        setMapData(removeData);
+                        localStorage.setItem(
+                          "mapData",
+                          JSON.stringify(removeData)
+                        );
+
                         setBookmarkedData([...bookmarkedData, restaurantData]);
                         localStorage.setItem(
                           "bookmarks",
                           JSON.stringify([...bookmarkedData, restaurantData])
                         );
-                        // setMapData(
-                        //   data.filter((map) => map.id !== restaurantData.id)
-                        // );
+
                         // changeCookiesBookmarks();
                       }}
                     >
