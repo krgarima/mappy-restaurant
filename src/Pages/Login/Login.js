@@ -58,11 +58,11 @@ const Login = () => {
   };
 
   return (
-    <div className="SignUp center">
-      <div className="signUp-Container">
-        <h1 className="signUp-heading">Login</h1>
+    <div className="login center">
+      <div className="login-container">
+        <h1 className="login-heading">Login</h1>
 
-        <form className="signup-contents">
+        <form className="login-contents">
           <label htmlFor="userNm" className="userNm">
             Email address
           </label>
@@ -108,10 +108,7 @@ const Login = () => {
             </label>
           </div>
 
-          <button
-            className="signup-btns createNewAccount-btn"
-            onClick={handleLogin}
-          >
+          <button className="btn-login" onClick={handleLogin}>
             Login
           </button>
           {showError ? <p className="error-msg">{errorMsg}</p> : ""}

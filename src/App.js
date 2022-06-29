@@ -10,14 +10,10 @@ function App() {
   const { logged } = useContext(AuthContext);
 
   const getCookies = (cookieName) => {
-    let dataArray;
     let cookieArray = document.cookie.split(";");
-    if (cookieArray !== 0) {
-      for (let i = 0; i < cookieArray.length; i++) {
-        dataArray = cookieArray[i].split("=");
-        if (dataArray[0] === cookieName) {
-          return dataArray[1];
-        }
+    for (let i = 0; i < cookieArray.length; i++) {
+      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+        return cookieArray[i].split("=")[1];
       }
     }
   };

@@ -5,7 +5,7 @@ import { BookmarksContext } from "../../context/bookmarks-context";
 import "./Home.css";
 
 const Home = () => {
-  const { mapData, setMapData } = useContext(MapContext);
+  const { setMapData } = useContext(MapContext);
   const { bookmarkedData, setBookmarkedData } = useContext(BookmarksContext);
 
   const getCookies = (cookieName) => {

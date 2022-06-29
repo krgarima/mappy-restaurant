@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import "./Navbar.css";
@@ -8,14 +8,10 @@ const Navbar = () => {
   const { setLogged } = useContext(AuthContext);
 
   const getCookies = (cookieName) => {
-    let dataArray;
     let cookieArray = document.cookie.split(";");
-    if (cookieArray !== 0) {
-      for (let i = 0; i < cookieArray.length; i++) {
-        dataArray = cookieArray[i].split("=");
-        if (dataArray[0] === cookieName) {
-          return dataArray[1];
-        }
+    for (let i = 0; i < cookieArray.length; i++) {
+      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+        return cookieArray[i].split("=")[1];
       }
     }
   };
