@@ -5,11 +5,6 @@ import { BookmarksContext } from "../../context/bookmarks-context";
 const Bookmarks = () => {
   const { setBookmarkedData } = useContext(BookmarksContext);
 
-  //   const changeCookiesBookmarks = () => {
-  //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
-  //   };
-
-  // const data = JSON.parse(localStorage.getItem("bookmarks"));
   const getCookies = (cookieName) => {
     let cookieArray = document.cookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {

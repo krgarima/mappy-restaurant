@@ -10,21 +10,6 @@ const Search = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const { mapData, setMapData } = useContext(MapContext);
 
-  // useEffect(() => {
-  //   localStorage.setItem("mapData", JSON.stringify(mapData));
-  // }, [mapData]);
-
-  // const addToCookies = () => {
-  // let prevCookie = mapData.map((co) => JSON.stringify(co));
-  // let newCookie = [...prevCookie, JSON.stringify(restaurant)];
-  // document.cookie = ["mapData=", newCookie].join("");
-  // console.log(prevCookie);
-  // document.cookie = "mapData=" + JSON.stringify(mapData);
-  // console.log(prevCookie);
-  // };
-
-  // console.log(mapData);
-
   useEffect(() => {
     (async () => {
       try {
@@ -58,11 +43,8 @@ const Search = () => {
 
   const handleAddToMaps = (restaurants) => {
     setMapData([...mapData, restaurants]);
-    // addToCookies(restaurants);
     setDataSuggestions([]);
     setShowSuggestions(false);
-    // setInputSearch("");
-    // localStorage.setItem("mapData", JSON.stringify([...mapData, restaurants]));
     document.cookie = "mapData=" + JSON.stringify([...mapData, restaurants]);
   };
 

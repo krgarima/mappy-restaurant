@@ -8,15 +8,6 @@ const Home = () => {
   const { mapData, setMapData } = useContext(MapContext);
   const { bookmarkedData, setBookmarkedData } = useContext(BookmarksContext);
 
-  // const changeCookiesMap = () => {
-  //   document.cookie = "mapData=" + JSON.stringify(mapData);
-  // };
-  // const changeCookiesBookmarks = () => {
-  //   document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
-  // };
-
-  // const data = JSON.parse(localStorage.getItem("mapData"));
-
   const getCookies = (cookieName) => {
     let cookieArray = document.cookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {

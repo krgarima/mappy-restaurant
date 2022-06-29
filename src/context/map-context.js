@@ -17,15 +17,6 @@ const MapContextProvider = ({ children }) => {
   };
   const [mapData, setMapData] = useState(getCookies("mapData"));
 
-  // const mapCookies = getCookies("mapData");
-  // const getData = () => {
-  //   if (localStorage.getItem("mapData") !== "undefined")
-  //     return localStorage.getItem("mapData");
-  //   else return [];
-  // };
-
-  // console.log(getCookies("mapData"));
-
   return (
     <div>
       <MapContext.Provider
