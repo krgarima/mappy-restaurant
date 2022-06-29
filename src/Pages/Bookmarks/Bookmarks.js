@@ -3,7 +3,7 @@ import { Navbar, Sidebar, Maps } from "../../Components/";
 import { BookmarksContext } from "../../context/bookmarks-context";
 
 const Bookmarks = () => {
-  const { bookmarkedData, setBookmarkedData } = useContext(BookmarksContext);
+  const { setBookmarkedData } = useContext(BookmarksContext);
 
   //   const changeCookiesBookmarks = () => {
   //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);

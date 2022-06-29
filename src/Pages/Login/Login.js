@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = () => {
   const [data, setData] = useState([]);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { logged, setLogged } = useContext(AuthContext);
+  const { setLogged } = useContext(AuthContext);
+  const [showError, setShowError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,13 +35,24 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     data.map((userData) => {
-      if (userData.fields.username === userName) {
-        if (userData.fields.password === password) {
-          document.cookie = "encodedToken=c84fdhsue82isdJJHHGH%%&&0";
-          setLogged(true);
-          navigate("/home");
-        } else console.log("no");
-      } else console.log("no");
+      if (userName && password) {
+        if (userData.fields.username === userName) {
+          if (userData.fields.password === password) {
+            document.cookie = "encodedToken=c84fdhsue82isdJJHHGH%%&&0";
+            setLogged(true);
+            navigate("/home");
+          } else {
+            setErrorMsg("Username / Password is incorrect!");
+            setShowError(true);
+          }
+        } else {
+          setErrorMsg("Username / Password is incorrect!");
+          setShowError(true);
+        }
+      } else {
+        setErrorMsg("Enter both Username and Password!");
+        setShowError(true);
+      }
     });
   };
 
@@ -59,6 +73,7 @@ const Login = () => {
             value={userName}
             onChange={(e) => {
               setUserName(e.target.value);
+              setShowError(false);
             }}
           />
           <br />
@@ -73,6 +88,7 @@ const Login = () => {
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
+              setShowError(false);
             }}
           />
           <br />
@@ -97,6 +113,7 @@ const Login = () => {
           >
             Login
           </button>
+          {showError ? <p className="error-msg">{errorMsg}</p> : ""}
         </form>
       </div>
     </div>

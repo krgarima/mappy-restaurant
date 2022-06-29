@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Login, Home, Bookmarks } from "./Pages/index";
 import { AuthContext } from "./context/auth-context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -53,6 +55,17 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
