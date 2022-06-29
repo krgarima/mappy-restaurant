@@ -18,7 +18,6 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      {console.log(document.cookie)}
       <Navbar />
       <div className="container">
         <aside>
@@ -42,9 +41,12 @@ const Home = () => {
                     Remove
                   </button>
                   <button
-                    onClick={() =>
-                      setBookmarkedData([...bookmarkedData, restaurantData])
-                    }
+                    onClick={() => {
+                      setBookmarkedData([...bookmarkedData, restaurantData]);
+                      setMapData(
+                        mapData.filter((map) => map.id !== restaurantData.id)
+                      );
+                    }}
                   >
                     Bookmark
                   </button>

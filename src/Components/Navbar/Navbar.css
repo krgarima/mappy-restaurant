@@ -24,16 +24,7 @@
   font-weight: 600;
   color: var(--white-color);
   -webkit-text-stroke: 1px var(--primary-color);
-  /* font-family: "Playfair Display", serif;
-  font-family: "Lobster", cursive; */
 }
-
-/* .searchArea {
-  width: 65vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 .navicons {
   width: 15vw;

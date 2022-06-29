@@ -36,13 +36,11 @@ const Search = () => {
 
   const handleChange = (e) => {
     setShowSuggestions(true);
-
     setDataSuggestions(
       restaurantData?.filter((restaurant) =>
         restaurant.fields.Name.toLowerCase().match(e.target.value.toLowerCase())
       )
     );
-
     if (e.target.value?.length === 0) {
       setDataSuggestions([]);
       setShowSuggestions(false);
@@ -66,7 +64,7 @@ const Search = () => {
         />
         {showSuggestions ? (
           <div className="suggestions">
-            {dataSuggestions.map((restaurants) => (
+            {dataSuggestions?.map((restaurants) => (
               <p
                 key={restaurants.id}
                 className="suggested-restaurant"

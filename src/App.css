@@ -55,7 +55,6 @@ body {
 
 .btns-todo {
   height: 10vh;
-  width: 40vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

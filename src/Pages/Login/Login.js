@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AuthContext } from "../../context/auth-context";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [data, setData] = useState([]);
@@ -34,6 +34,7 @@ const Login = () => {
     data.map((userData) => {
       if (userData.fields.username === userName) {
         if (userData.fields.password === password) {
+          document.cookie = "encodedToken=c84fdhsue82isdJJHHGH%%&&0";
           setLogged(true);
           navigate("/home");
         } else console.log("no");
@@ -96,16 +97,6 @@ const Login = () => {
           >
             Login
           </button>
-
-          {/* <button
-            className="signup-btns btn-dummyData"
-            onClick={setDummyData}
-          >
-            Add Dummy username & password
-          </button> */}
-          {/* <button className="signup-btns toSignUpPage-btn">
-            <Link to="/SignUp">Create a New Account &gt;</Link>
-          </button> */}
         </form>
       </div>
     </div>

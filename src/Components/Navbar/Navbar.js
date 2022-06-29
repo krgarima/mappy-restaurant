@@ -7,7 +7,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { logged, setLogged } = useContext(AuthContext);
 
-  console.log(logged);
+  // let encodedToken =
+  //   document.cookie.length > 0
+  //     ? document.cookie.split(";")[2].split("=")[1]
+  //     : "";
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -20,7 +24,7 @@ const Navbar = () => {
           onClick={() => {
             if (logged) {
               setLogged(false);
-              // localStorage.removeItem("token");
+              document.cookie = "encodedToken=";
               navigate("/home");
             } else {
               navigate("/");
@@ -29,13 +33,6 @@ const Navbar = () => {
         >
           {logged ? "Log Out" : " Log In"}
         </button>
-
-        {/* <li>
-          <i
-            className="fas fa-2x fa-search search-icon"
-            onClick={() => setShowSearchBar(!showSearchBar)}
-          ></i>
-        </li> */}
       </ul>
     </div>
   );
