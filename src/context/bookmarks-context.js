@@ -13,6 +13,11 @@ const BookmarksContext = createContext();
 // };
 
 const BookmarksContextProvider = ({ children }) => {
+  // const getData = () => {
+  //   if (localStorage.getItem("bookmarks") !== null)
+  //     return localStorage.getItem("bookmarks");
+  //   else return [];
+  // };
   const [bookmarkedData, setBookmarkedData] = useState([]);
 
   return (

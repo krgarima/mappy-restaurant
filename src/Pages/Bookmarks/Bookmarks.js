@@ -9,6 +9,8 @@ const Bookmarks = () => {
   //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
   //   };
 
+  // const data = JSON.parse(localStorage.getItem("bookmarks"));
+
   return (
     <div className="home-page">
       <Navbar />
@@ -19,25 +21,37 @@ const Bookmarks = () => {
         <aside className="home-container  bookmark">
           {/* <Search /> */}
           <section className="all-maps">
-            {bookmarkedData.map((restaurantData) => (
-              <div className="map-container" key={restaurantData.id}>
-                <Maps restaurantData={restaurantData} />
-                <div className="btns-todo">
-                  <button
-                    onClick={() => {
-                      setBookmarkedData(
-                        bookmarkedData.filter(
-                          (map) => map.id !== restaurantData.id
-                        )
-                      );
-                      // changeCookiesBookmarks();
-                    }}
-                  >
-                    Remove from Bookmark
-                  </button>
+            {bookmarkedData ? (
+              bookmarkedData.map((restaurantData) => (
+                <div className="map-container" key={restaurantData.id}>
+                  <Maps restaurantData={restaurantData} />
+                  <div className="btns-todo">
+                    <button
+                      onClick={() => {
+                        setBookmarkedData(
+                          bookmarkedData.filter(
+                            (map) => map.id !== restaurantData.id
+                          )
+                        );
+                        // localStorage.setItem(
+                        //   "bookmarks",
+                        //   JSON.stringify(
+                        //     bookmarkedData.filter(
+                        //       (map) => map.id !== restaurantData.id
+                        //     )
+                        //   )
+                        // );
+                        // changeCookiesBookmarks();
+                      }}
+                    >
+                      Remove from Bookmark
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <h1>NO record found</h1>
+            )}
           </section>
         </aside>
       </div>

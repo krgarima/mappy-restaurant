@@ -15,8 +15,9 @@ const Home = () => {
   //   document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
   // };
 
-  // let a = JSON.parse(mapData);
-  console.log(Array.from(mapData));
+  const data = JSON.parse(localStorage.getItem("mapData"));
+  console.log(mapData);
+  // console.log(Array(data));
 
   return (
     <div className="home-page">
@@ -28,35 +29,48 @@ const Home = () => {
         <aside className="home-container">
           <Search />
           <section className="all-maps">
-            {/* {mapData.map((restaurantData) => (
-              <div className="map-container" key={restaurantData.id}>
-                <Maps restaurantData={restaurantData} />
+            {data ? (
+              data.map((restaurantData) => (
+                <div className="map-container" key={restaurantData.id}>
+                  <Maps restaurantData={restaurantData} />
 
-                <div className="btns-todo">
-                  <button
-                    onClick={() => {
-                      setMapData(
-                        mapData.filter((map) => map.id !== restaurantData.id)
-                      );
-                      // changeCookiesMap();
-                    }}
-                  >
-                    Remove
-                  </button>
-                  <button
-                    onClick={() => {
-                      setBookmarkedData([...bookmarkedData, restaurantData]);
-                      setMapData(
-                        mapData.filter((map) => map.id !== restaurantData.id)
-                      );
-                      // changeCookiesBookmarks();
-                    }}
-                  >
-                    Bookmark
-                  </button>
+                  <div className="btns-todo">
+                    <button
+                      onClick={() => {
+                        const removeData = data.filter(
+                          (map) => map.id !== restaurantData.id
+                        );
+                        setMapData(removeData);
+                        localStorage.setItem(
+                          "mapData",
+                          JSON.stringify(removeData)
+                        );
+                        // changeCookiesMap();
+                      }}
+                    >
+                      Remove
+                    </button>
+                    <button
+                      onClick={() => {
+                        setBookmarkedData([...bookmarkedData, restaurantData]);
+                        localStorage.setItem(
+                          "bookmarks",
+                          JSON.stringify([...bookmarkedData, restaurantData])
+                        );
+                        // setMapData(
+                        //   data.filter((map) => map.id !== restaurantData.id)
+                        // );
+                        // changeCookiesBookmarks();
+                      }}
+                    >
+                      Bookmark
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))} */}
+              ))
+            ) : (
+              <h1>No records found</h1>
+            )}
           </section>
         </aside>
       </div>
