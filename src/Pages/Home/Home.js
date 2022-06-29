@@ -15,9 +15,18 @@ const Home = () => {
   //   document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
   // };
 
-  const data = JSON.parse(localStorage.getItem("mapData"));
-  console.log(mapData);
-  // console.log(Array(data));
+  // const data = JSON.parse(localStorage.getItem("mapData"));
+
+  const getCookies = (cookieName) => {
+    let cookieArray = document.cookie.split(";");
+    for (let i = 0; i < cookieArray.length; i++) {
+      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+        return JSON.parse(cookieArray[i].split("=")[1]);
+      }
+    }
+  };
+
+  const data = getCookies("mapData");
 
   return (
     <div className="home-page">
@@ -28,6 +37,7 @@ const Home = () => {
         </aside>
         <aside className="home-container">
           <Search />
+
           <section className="all-maps">
             {data ? (
               data.map((restaurantData) => (
@@ -41,11 +51,8 @@ const Home = () => {
                           (map) => map.id !== restaurantData.id
                         );
                         setMapData(removeData);
-                        localStorage.setItem(
-                          "mapData",
-                          JSON.stringify(removeData)
-                        );
-                        // changeCookiesMap();
+                        document.cookie =
+                          "mapData=" + JSON.stringify(removeData);
                       }}
                     >
                       Remove
@@ -56,18 +63,13 @@ const Home = () => {
                           (map) => map.id !== restaurantData.id
                         );
                         setMapData(removeData);
-                        localStorage.setItem(
-                          "mapData",
-                          JSON.stringify(removeData)
-                        );
-
+                        document.cookie =
+                          "mapData=" + JSON.stringify(removeData);
                         setBookmarkedData([...bookmarkedData, restaurantData]);
-                        localStorage.setItem(
-                          "bookmarks",
-                          JSON.stringify([...bookmarkedData, restaurantData])
-                        );
 
-                        // changeCookiesBookmarks();
+                        document.cookie =
+                          "bookmarks=" +
+                          JSON.stringify([...bookmarkedData, restaurantData]);
                       }}
                     >
                       Bookmark

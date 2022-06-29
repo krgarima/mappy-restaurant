@@ -62,8 +62,8 @@ const Search = () => {
     setDataSuggestions([]);
     setShowSuggestions(false);
     // setInputSearch("");
-    // localStorage.setItem("mapData", JSON.stringify(mapData));
-    localStorage.setItem("mapData", JSON.stringify([...mapData, restaurants]));
+    // localStorage.setItem("mapData", JSON.stringify([...mapData, restaurants]));
+    document.cookie = "mapData=" + JSON.stringify([...mapData, restaurants]);
   };
 
   return (

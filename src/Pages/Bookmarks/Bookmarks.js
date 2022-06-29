@@ -9,7 +9,17 @@ const Bookmarks = () => {
   //     document.cookie = "bookmarks=" + JSON.stringify(bookmarkedData);
   //   };
 
-  const data = JSON.parse(localStorage.getItem("bookmarks"));
+  // const data = JSON.parse(localStorage.getItem("bookmarks"));
+  const getCookies = (cookieName) => {
+    let cookieArray = document.cookie.split(";");
+    for (let i = 0; i < cookieArray.length; i++) {
+      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+        return JSON.parse(cookieArray[i].split("=")[1]);
+      }
+    }
+  };
+
+  const data = getCookies("bookmarks");
 
   return (
     <div className="home-page">
@@ -32,11 +42,8 @@ const Bookmarks = () => {
                           (map) => map.id !== restaurantData.id
                         );
                         setBookmarkedData(removeData);
-                        localStorage.setItem(
-                          "bookmarks",
-                          JSON.stringify(removeData)
-                        );
-                        // changeCookiesBookmarks();
+                        document.cookie =
+                          "bookmarks=" + JSON.stringify(removeData);
                       }}
                     >
                       Remove from Bookmark
@@ -45,7 +52,7 @@ const Bookmarks = () => {
                 </div>
               ))
             ) : (
-              <h1>NO record found</h1>
+              <h1>No record found</h1>
             )}
           </section>
         </aside>

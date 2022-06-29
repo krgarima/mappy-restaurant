@@ -13,12 +13,19 @@ const BookmarksContext = createContext();
 // };
 
 const BookmarksContextProvider = ({ children }) => {
-  // const getData = () => {
-  //   if (localStorage.getItem("bookmarks") !== null)
-  //     return localStorage.getItem("bookmarks");
-  //   else return [];
-  // };
-  const [bookmarkedData, setBookmarkedData] = useState([]);
+  const getCookies = (cookieName) => {
+    let dataArray;
+    let cookieArray = document.cookie.split(";");
+    if (cookieArray !== 0) {
+      for (let i = 0; i < cookieArray.length; i++) {
+        dataArray = cookieArray[i].split("=");
+        if (dataArray[0] === " " + cookieName) {
+          return dataArray[1];
+        } else return [];
+      }
+    }
+  };
+  const [bookmarkedData, setBookmarkedData] = useState(getCookies("bookmarks"));
 
   return (
     <div>
