@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
 import "./Navbar.css";
@@ -10,11 +10,13 @@ const Navbar = () => {
   const getCookies = (cookieName) => {
     let cookieArray = document.cookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {
-      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+      if (cookieArray[i].split("=")[0].trim() === cookieName) {
         return cookieArray[i].split("=")[1];
       }
     }
   };
+
+  const token = getCookies("encodedToken");
 
   return (
     <div className="navbar">
@@ -35,7 +37,7 @@ const Navbar = () => {
             }
           }}
         >
-          {getCookies("encodedToken") ? "Log Out" : " Log In"}
+          {token ? "Log Out" : " Log In"}
         </button>
       </ul>
     </div>

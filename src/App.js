@@ -12,7 +12,7 @@ function App() {
   const getCookies = (cookieName) => {
     let cookieArray = document.cookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {
-      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+      if (cookieArray[i].split("=")[0].trim() === cookieName) {
         return cookieArray[i].split("=")[1];
       }
     }
@@ -21,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {getCookies("encodedToken")}
         <Route path="/" element={<Login />} />
         <Route
           path="/home"

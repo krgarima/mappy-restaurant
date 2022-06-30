@@ -11,7 +11,7 @@ const Home = () => {
   const getCookies = (cookieName) => {
     let cookieArray = document.cookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {
-      if (cookieArray[i].split("=")[0] === " " + cookieName) {
+      if (cookieArray[i].split("=")[0].trim() === cookieName) {
         return JSON.parse(cookieArray[i].split("=")[1]);
       }
     }
