@@ -70,7 +70,7 @@ const Search = () => {
         />
         {showSuggestions ? (
           <div className="suggestions">
-            {dataSuggestions.length > 0 ? (
+            {dataSuggestions?.length > 0 ? (
               dataSuggestions?.map((restaurants) => (
                 <p
                   key={restaurants.id}

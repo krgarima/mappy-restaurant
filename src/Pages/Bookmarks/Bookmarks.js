@@ -47,7 +47,7 @@ const Bookmarks = () => {
                 </div>
               ))
             ) : (
-              <h1>No records found!</h1>
+              <h1 className="data-msg">No records found!</h1>
             )}
           </section>
         </aside>

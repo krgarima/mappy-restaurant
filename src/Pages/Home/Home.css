@@ -31,3 +31,8 @@
 .bookmark {
   margin-top: 5rem;
 }
+
+.data-msg {
+  color: var(--darkGray-color);
+  font-size: 1rem;
+}
