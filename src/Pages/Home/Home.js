@@ -30,7 +30,7 @@ const Home = () => {
           <Search />
 
           <section className="all-maps">
-            {data ? (
+            {data?.length > 0 ? (
               data.map((restaurantData) => (
                 <div className="map-container" key={restaurantData.id}>
                   <Maps restaurantData={restaurantData} />
@@ -69,7 +69,7 @@ const Home = () => {
                 </div>
               ))
             ) : (
-              <h1>No records found</h1>
+              <h1>No records found!</h1>
             )}
           </section>
         </aside>

@@ -41,6 +41,18 @@ const Search = () => {
     }
   };
 
+  const debounce = (func, delay) => {
+    let timerId = null;
+    return (...args) => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      timerId = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const debounceData = debounce(handleChange, 500);
+
   const handleAddToMaps = (restaurants) => {
     setMapData([...mapData, restaurants]);
     setDataSuggestions([]);
@@ -53,20 +65,24 @@ const Search = () => {
       <div className="search">
         <input
           // value={inputSearch}
-          onChange={handleChange}
+          onChange={debounceData}
           placeholder="Search for Restaurants"
         />
         {showSuggestions ? (
           <div className="suggestions">
-            {dataSuggestions?.map((restaurants) => (
-              <p
-                key={restaurants.id}
-                className="suggested-restaurant"
-                onClick={() => handleAddToMaps(restaurants)}
-              >
-                {restaurants.fields.Name}
-              </p>
-            ))}
+            {dataSuggestions.length > 0 ? (
+              dataSuggestions?.map((restaurants) => (
+                <p
+                  key={restaurants.id}
+                  className="suggested-restaurant"
+                  onClick={() => handleAddToMaps(restaurants)}
+                >
+                  {restaurants.fields.Name}
+                </p>
+              ))
+            ) : (
+              <p className="suggested-restaurant">No data found</p>
+            )}
           </div>
         ) : (
           ""
