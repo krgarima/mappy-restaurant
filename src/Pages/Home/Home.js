@@ -39,7 +39,7 @@ const Home = () => {
                     <button
                       onClick={() => {
                         const removeData = data.filter(
-                          (map) => map.id !== restaurantData.id
+                          (maps) => maps.id !== restaurantData.id
                         );
                         setMapData(removeData);
                         document.cookie =
@@ -51,7 +51,7 @@ const Home = () => {
                     <button
                       onClick={() => {
                         const removeData = data.filter(
-                          (map) => map.id !== restaurantData.id
+                          (maps) => maps.id !== restaurantData.id
                         );
                         setMapData(removeData);
                         document.cookie =

@@ -10,7 +10,7 @@ const BookmarksContextProvider = ({ children }) => {
       for (let i = 0; i < cookieArray.length; i++) {
         dataArray = cookieArray[i].split("=");
         if (dataArray[0].trim() === cookieName) {
-          return dataArray[1];
+          return JSON.parse(dataArray[1]);
         } else return [];
       }
     }
